@@ -1,0 +1,24 @@
+kind: KeycloakUser
+apiVersion: keycloak.org/v1alpha1
+metadata:
+  annotations:
+    scm-url: git@github.com:AlyIbrahim/3scale-sso-oidc-integration.git
+  name: zync-user
+  labels:
+    app: 3scale-integration
+  namespace: api-management
+spec:
+  user:
+    username: aly
+    firstName: Aly
+    lastName: Ibrahim
+    email: aly@redhat.com
+    enabled: true
+    emailVerified: true
+    credentials:
+      - temporary: false
+        type: password
+        value: 3scale
+  realmSelector:
+    matchLabels:
+      app: 3scale-integration

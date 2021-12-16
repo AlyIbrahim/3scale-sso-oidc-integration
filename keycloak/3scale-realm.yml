@@ -1,0 +1,17 @@
+kind: KeycloakRealm
+apiVersion: keycloak.org/v1alpha1
+metadata:
+  annotations:
+    scm-url: git@github.com:AlyIbrahim/3scale-sso-oidc-integration.git
+  name: 3scale-realm
+  labels:
+    app: 3scale-integration
+spec:
+  realm:
+    id: 3scale
+    realm: 3scale
+    enabled: true
+    displayName: 3Scale
+  instanceSelector:
+    matchLabels:
+      app: sso

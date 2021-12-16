@@ -1,0 +1,5 @@
+#!/bin/bash
+export SSO_PORT=443
+export CLIENT_ID=zync
+export CLIENT_SECRET=`kubectl get secrets keycloak-client-secret-$CLIENT_ID -o jsonpath="{.data.CLIENT_SECRET}" -n $NAMESPACE | base64 -d`
+export ISSUER=https://$CLIENT_ID:$CLIENT_SECRET@$SSO_HOST:$SSO_PORT/auth/realms/3scale

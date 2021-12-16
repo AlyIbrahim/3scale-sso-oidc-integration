@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  annotations:
+    scm-url: git@github.com:AlyIbrahim/3scale-sso-oidc-integration.git
+  name: aly-3scale-user
+stringData:
+  password: "123456"

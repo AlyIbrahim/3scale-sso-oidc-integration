@@ -1,0 +1,22 @@
+apiVersion: keycloak.org/v1alpha1
+kind: KeycloakClient
+metadata:
+  annotations:
+    scm-url: git@github.com:AlyIbrahim/3scale-sso-oidc-integration.git
+  name: 3scale-zync-client
+  labels:
+    app: 3scale-integration
+spec:
+  realmSelector:
+    matchLabels:
+      app: 3scale-integration
+  client:
+    clientId: zync
+    name: "3Scale Zync"
+    protocol: "openid-connect"
+    publicClient: false
+    accessType: "confidential"
+    directAccessGrants: false
+    standardFlowEnabled: false
+    serviceAccountsEnabled: true
+

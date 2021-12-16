@@ -1,0 +1,8 @@
+kind: DeveloperAccount
+apiVersion: capabilities.3scale.net/v1beta1
+metadata:
+  annotations:
+    scm-url: git@github.com:AlyIbrahim/3scale-sso-oidc-integration.git
+  name: redhat-developeraccount
+spec:
+  orgName: "Red Hat"

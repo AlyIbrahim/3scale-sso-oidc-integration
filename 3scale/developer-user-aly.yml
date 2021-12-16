@@ -1,0 +1,14 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: DeveloperUser
+metadata:
+  annotations:
+    scm-url: git@github.com:AlyIbrahim/3scale-sso-oidc-integration.git
+  name: aly-developeruser
+spec:
+  developerAccountRef:
+    name: redhat-developeraccount
+  email: aly@redhat.com
+  passwordCredentialsRef:
+    name: aly-3scale-user
+  role: admin
+  username: aly

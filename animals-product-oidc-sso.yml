@@ -1,0 +1,68 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Product
+metadata:
+  annotations:
+    scm-url: git@github.com:AlyIbrahim/3scale-sso-oidc-integration.git
+  name: animals-product
+spec:
+  name: "Animals API"
+  systemName: "animalsapi"
+  deployment:
+    apicastHosted:
+      authentication:
+        oidc:
+          issuerType: "keycloak"
+          issuerEndpoint: "$ISSUER"
+          authenticationFlow:
+            standardFlowEnabled: false
+            implicitFlowEnabled: true
+            serviceAccountsEnabled: false
+            directAccessGrantsEnabled: true
+          jwtClaimWithClientID: "azp"
+          jwtClaimWithClientIDType: "plain"
+  backendUsages:
+    animals:
+      path: /
+  mappingRules:
+    - httpMethod: GET
+      pattern: "/animals"
+      increment: 1
+      metricMethodRef: hits
+    - httpMethod: GET
+      pattern: "/animals/dogs"
+      increment: 1
+      metricMethodRef: dogs
+    - httpMethod: GET
+      pattern: "/animals/cats"
+      increment: 1
+      metricMethodRef: cats
+    - httpMethod: GET
+      pattern: "/animals/horses"
+      increment: 1
+      metricMethodRef: horses
+  metrics:
+    hits:
+      description: Number of API hits
+      friendlyName: Hits
+      unit: "hit"
+    dogs:
+      description: Number of API hits
+      friendlyName: Dogs
+      unit: "hit"
+    cats:
+      description: Number of API hits
+      friendlyName: Cats
+      unit: "hit"
+    horses:
+      description: Number of API hits
+      friendlyName: Horses
+      unit: "hit"
+  applicationPlans:
+    free-plan:
+      name: "Free Plan"
+      pricingRules:
+        - from: 1
+          to: 100
+          pricePerUnit: "0"
+          metricMethodRef:
+            systemName: hits

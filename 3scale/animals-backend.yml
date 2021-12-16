@@ -1,0 +1,40 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Backend
+metadata:
+  annotations:
+    scm-url: git@github.com:AlyIbrahim/3scale-sso-oidc-integration.git
+  name: animals-backend
+spec:
+  name: "Animals"
+  systemName: "animals"
+  privateBaseURL: "http://animals-counter-animals.apps.cluster-lnw2v.lnw2v.sandbox1765.opentlc.com"
+  mappingRules:
+    - httpMethod: GET
+      pattern: "/animals/dogs"
+      increment: 1
+      metricMethodRef: hits
+    - httpMethod: GET
+      pattern: "/animals/cats"
+      increment: 1
+      metricMethodRef: hits
+    - httpMethod: GET
+      pattern: "/animals/horses"
+      increment: 1
+      metricMethodRef: hits
+  metrics:
+    hits:
+      description: Number of API hits
+      friendlyName: Hits
+      unit: "hit"
+    dogs:
+      description: Number of API hits
+      friendlyName: Dogs
+      unit: "hit"
+    cats:
+      description: Number of API hits
+      friendlyName: Cats
+      unit: "hit"
+    horses:
+      description: Number of API hits
+      friendlyName: Horses
+      unit: "hit"
